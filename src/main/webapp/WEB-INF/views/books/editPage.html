@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EditPage</title>
+</head>
+<body>
+<form th:method="patch" th:object="${book}" th:action="@{/books/{id}/update(id=${book.getId()})}">
+  <label for="name">Введите название книги</label>
+  <input type="text" id="name" th:field="*{name}"/>
+  <div style="color:darkred" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+  <br/>
+  <label for="author">Введите имя автора книги</label>
+  <input type="text" id="author" th:field="*{author}"/>
+  <div style="color:darkred" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></div>
+  <br/>
+  <label for="publishment">Введите год публикации книги</label>
+  <input type="text" id="publishment" th:field="*{publishment}"/>
+  <div style="color:darkred" th:if="${#fields.hasErrors('publishment')}" th:errors="*{publishment}"></div>
+  <br/>
+  <input type="submit" value="Сохранить">
+</form>
+<br/>
+<form th:action="@{/books/{id}(id=${book.getId()})}">
+  <button>Назад</button>
+</form>
+</body>
+</html>

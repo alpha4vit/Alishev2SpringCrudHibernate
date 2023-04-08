@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Список книг</title>
+</head>
+<body>
+<div th:each="book : ${books}">
+    <a th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book.getName()} + ', ' + ${book.getPublishment()}">Person</a>
+</div>
+<br/>
+<hr/>
+<br/>
+<form th:action="@{/books/new}">
+    <button>Добавить новую книгу</button>
+</form>
+<br/>
+<form th:action="@{/books/search}">
+    <button>Поиск книги</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Персональная информация</title>
+</head>
+<body>
+<h2 th:text="${person.getId()}+') '+${person.getName()} + ', ' + ${person.getAge()}">Name</h2>
+<br/>
+<div th:if="${books.isEmpty()}">
+    <span>У данного посетителя нет книг</span>
+</div>
+<div th:if="${!books.isEmpty()}">
+    <div th:each="book : ${books}">
+        <span th:style="${book.getDelayed()} ? 'color:red'" th:text="${book.getName()}"></span>
+    </div>
+</div>
+<hr/>
+<form th:action="@{/people/{id}/edit(id=${person.getId()})}">
+    <button>Изменить</button>
+</form>
+<br/>
+<form th:method="delete" th:action="@{/people/{id}/delete(id=${person.getId()})}">
+    <button>Удалить</button>
+</form>
+</body>
+</html>
